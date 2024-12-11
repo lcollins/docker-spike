@@ -8,7 +8,7 @@ plugins {
     id("com.bmuschko.docker-remote-api") version "9.3.1"
 }
 
-val containerImageName = "hello-world-app"
+val containerImageName = "ghcr.io/lcollins/hello-world-app"
 val containerImageTag = "1.0.0"
 
 tasks.register<DockerBuildImage>("buildDockerImage") {

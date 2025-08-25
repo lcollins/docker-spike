@@ -3,13 +3,21 @@ import com.bmuschko.gradle.docker.tasks.image.DockerTagImage
 import com.bmuschko.gradle.docker.tasks.image.DockerPushImage
 
 plugins {
-    //id("java")
-    id("com.palantir.git-version") version "3.1.0"
-    id("com.bmuschko.docker-remote-api") version "9.3.1"
+    id("com.palantir.git-version") version "4.0.0"
+    id("com.bmuschko.docker-remote-api") version "9.4.0"
 }
 
+val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
+val details = versionDetails()
+details.lastTag
+details.commitDistance
+details.gitHash
+details.gitHashFull // full 40-character Git commit hash
+details.branchName // is null if the repository in detached HEAD mode
+details.isCleanTag
+
 val containerImageName = "ghcr.io/lcollins/hello-world-app"
-val containerImageTag = "1.0.0"
+val containerImageTag = "${details.gitHash}"
 
 tasks.register<DockerBuildImage>("buildDockerImage") {
     inputDir.set(file(project.projectDir)) // Use the project root as the Docker context
@@ -38,7 +46,3 @@ tasks.register<DockerPushImage>("dockerPushImage") {
 tasks.named("dockerPushImage") {
     dependsOn("dockerTagImage")
 }
-
-//tasks.named("build") {
-//    dependsOn("dockerPushImage")
-//}

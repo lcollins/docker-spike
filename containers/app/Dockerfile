@@ -1,5 +1,5 @@
 # Use a lightweight base image
-FROM alpine:3.22
+FROM alpine:3.23
 
 # Set working directory
 WORKDIR /app

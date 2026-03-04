@@ -4,7 +4,7 @@ import com.bmuschko.gradle.docker.tasks.image.DockerPushImage
 
 plugins {
     id("com.palantir.git-version") version "4.3.0"
-    id("com.bmuschko.docker-remote-api") version "9.4.0"
+    id("com.bmuschko.docker-remote-api") version "10.0.0"
 }
 
 val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra

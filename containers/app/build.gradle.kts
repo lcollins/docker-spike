@@ -3,7 +3,7 @@ import com.bmuschko.gradle.docker.tasks.image.DockerTagImage
 import com.bmuschko.gradle.docker.tasks.image.DockerPushImage
 
 plugins {
-    id("com.palantir.git-version") version "4.3.0"
+    id("com.palantir.git-version") version "5.0.0"
     id("com.bmuschko.docker-remote-api") version "10.0.0"
 }
 
